@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scripts/library.js" defer></script>
+    <link rel="shortcut icon" href="assets/Book.svg" type="image/x-icon">
+    <title>Library</title>
+</head>
+<body>
+    <div id="overlay">
+        <div id="new_book_modal">
+            
+            <div class="content_container">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="content_container">
+                <label for="description">Description</label>
+                <textarea name="description" id="description"></textarea>
+            </div>
+            <div class="content_container">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="content_container">
+                <label for="year">Year</label>
+                <input type="text" id="year" name="year">
+            </div>
+            <div class="content_container">
+                <label for="file">Upload book image</label>
+                <input type="file" id="file" name="file">
+            </div>
+
+            <button class="not_read" id="read_or_not">Not read</button>
+            <div class="confirm_action">
+                <button id="cancel">Cancel</button>
+                <button id="confirm">Confirm</button>
+            </div>
+            
+        </div>
+
+        
+    </div>
+
+    <header class="layout-bar">
+        <div class="logo"><img class="icon_logo" src="assets/Book.svg"><h1>Library</h1></div>
+        <section class="edit_library">
+            <div id="remove_book" class="edit"><img src="assets/Remove.svg" alt=""><p>Remove</p></div>
+            <div id="new_book" class="edit"><img src="assets/Add.svg" alt=""><p>New</p></div>
+        </section>
+    </header>
+
+    <main>
+        <div class="library_container">
+            <div class="book_container">
+                <button class="not_read" id="read_or_not">Not read</button>
+            </div>
+            <div class="book_container"></div>
+            <div class="book_container"></div>
+            <div class="book_container"></div>
+            <div class="book_container"></div>
+        </div>
+    </main>
+
+    <footer class="layout-bar">
+
+    </footer>
+
+</body>
+</html>
