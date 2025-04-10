@@ -1,15 +1,18 @@
 const newBookButton = document.getElementById('new_book');
 const removeBookButton = document.getElementById('remove_book');
 const body = document.body;
+const readStatus = document.getElementById('read_or_not');
 const overlay = document.getElementById('overlay');
-const ReadOrNot = document.querySelectorAll('#read_or_not');
 const Confirm = document.getElementById('confirm');
 const Cancel = document.getElementById('cancel');
 const libraryContainer = document.getElementById('library_container');
+
 let myLibrary = [];
 
+
+// Creating book
 class Book {
-    constructor(name, imageUrl,description,author,year,readStatus){
+    constructor(name, description,year,author,imageUrl,readStatus){
         this.id = crypto.randomUUID();
         this.name = name;
         this.image = imageUrl;
@@ -21,69 +24,75 @@ class Book {
 
 };
 
-function addBookToLibrary(){
-    let name = document.getElementById('name').value;
-    let description = document.getElementById('description').value;
-    let year = document.getElementById('year').value;
-    let author = document.getElementById('author').value;
-    let image = document.getElementById('file');
-    let readStatus = document.getElementById('read_or_not').classList.value;
-
-    let newBook = new Book(name,image,description,author,year,readStatus);
-    myLibrary.push(newBook);
-
-    
-    overlay.style.display = 'none'
-    readBooksOfLibrary()
-};
-
+// Iterating through the library
 function readBooksOfLibrary(){
+    libraryContainer.innerHTML = "";
     myLibrary.forEach((element)=>{
 
-    let bookContainer = document.createElement('div');
-    bookContainer.classList.add('book_container');
+        let bookContainer = document.createElement('div');
+        bookContainer.classList.add('book_container');
 
-    let book = document.createElement('div');
-    book.classList.add('book');
+        let book = document.createElement('div');
+        book.classList.add('book');
 
-    let img = document.createElement('img');
-    img.src = URL.createObjectURL(element.image.files[0]);
-    img.alt = element.name;
-    document.getElementById('file').value = '';
-    
-    let readStatus = document.createElement('button');
-    readStatus.classList.add(element.readStatus);
-    readStatus.innerHTML= element.readStatus;
-    console.log(element.readStatus);
+        let img = document.createElement('img');
+        img.src = element.image
+        img.alt = element.name;
+        document.getElementById('file').value = '';
+        
+        let readStatus = document.createElement('button');
+        readStatus.classList.add('read_or_not');
 
-    book.appendChild(img);
-    bookContainer.appendChild(book);
-    bookContainer.appendChild(readStatus);
-    libraryContainer.appendChild(bookContainer);
+        // Mostrar status inicial, sem alterar o valor
+        if (element.readStatus === true) {
+            readStatus.classList.add('read');
+            readStatus.innerHTML = 'Read';
+        } else {
+            readStatus.classList.add('not_read');
+            readStatus.innerHTML = 'Not Read';
+        }
+
+        // Alterar o valor só quando clicar
+        readStatus.addEventListener('click', () => {
+            element.readStatus = !element.readStatus;
+
+            if (element.readStatus === true) {
+                readStatus.classList.remove('not_read');
+                readStatus.classList.add('read');
+                readStatus.innerHTML = 'Read';
+                console.log('FOI');
+            } else {
+                readStatus.classList.remove('read');
+                readStatus.classList.add('not_read');
+                readStatus.innerHTML = 'Not Read';
+                console.log('Nao foi');
+            }
+        });
+
+        book.appendChild(img);
+        bookContainer.appendChild(book);
+        bookContainer.appendChild(readStatus);
+        libraryContainer.appendChild(bookContainer);
 })};
 
+// Adding book to the library
+function addBookToLibrary(name,description,year,author,imageUrl,readStatus){   
+    let newBook = new Book(name,description,year,author,imageUrl,readStatus);
+    myLibrary.push(newBook);
+    overlay.style.display = 'none'
+    readBooksOfLibrary()
+    
+};
 
-ReadOrNot.forEach((element)=>{
-    element.addEventListener('mouseup',()=>{
-        if (element.classList.contains('read')) {
-            element.classList.remove('read');
-            element.classList.add('not_read');
-            element.innerHTML = "Not Read";
-        }
-        else if(element.classList.contains('not_read')){
-            element.classList.remove('not_read');
-            element.classList.add('read');
-            element.innerHTML = 'Read';
-        };
-    });
-})
 
+    
+//New Book Config
 Cancel.addEventListener('mouseup',()=>{
     overlay.style.display = 'none';
 });
 
 Confirm.addEventListener('mouseup',()=>{
-    addBookToLibrary();
+    
 });
 
 newBookButton.addEventListener('mouseup',()=>{
@@ -93,3 +102,6 @@ newBookButton.addEventListener('mouseup',()=>{
 removeBookButton.addEventListener('mouseup',()=>{
 
 });
+
+addBookToLibrary('bible','a history of humanity',2005,'God','booksImages/Bible.png',true);
+addBookToLibrary('percy jackson','Half human and half god, son of Poseidon.',2000,'Rick Riordan','booksImages/percyjackson.png',false);

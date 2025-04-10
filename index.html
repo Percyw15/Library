@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="overlay">
-        <div id="new_book_modal">
+        <form id="new_book_modal">
             
             <div class="content_container">
                 <label for="name">Name</label>
@@ -26,20 +26,20 @@
             </div>
             <div class="content_container">
                 <label for="year">Year</label>
-                <input type="text" id="year" name="year">
+                <input type="number" id="year" name="year">
             </div>
             <div class="content_container">
                 <label for="file">Upload book image</label>
-                <input type="file" id="file" name="file">
+                <input type="file" id="file" name="file" accept="image/*">
             </div>
 
-            <button class="not_read" id="read_or_not">Not read</button>
+            <button class="not_read read_or_not" id="read">Not Read</button>
             <div class="confirm_action">
                 <button id="cancel">Cancel</button>
                 <button id="confirm">Confirm</button>
             </div>
             
-        </div>
+        </form>
 
         
     </div>
@@ -53,14 +53,6 @@
 
     <main>
         <div id="library_container">
-            <div class="book_container">
-                <div class="book"><img src="booksImages/Bible.png" alt="Bible"></div>
-                <button class="not_read" id="read_or_not">Not Read</button>
-            </div>
-            <div class="book_container">
-                <div class="book"><img src="booksImages/percyjackson.png" alt="Bible"></div>
-                <button class="not_read" id="read_or_not">Not Read</button>
-            </div>
             
         </div>
     </main>
