@@ -75,7 +75,7 @@ main {
 }
 
 
-#overlay {
+#new_book_overlay {
     background-color: rgba(0, 0, 0, 0.178);
     position: fixed;
     top: 0;
@@ -118,7 +118,6 @@ main {
     font-family: inherit;
     width: 90px;
     height: 30px;
-    border-radius: 10px;
 }
 
 .read {
@@ -176,4 +175,73 @@ label {
 }
 .book img:hover {
     transform: scale(1.05);
+}
+.book.removal-mode {
+    filter: brightness(60%);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgb(0,0,0,0.6);
+}
+
+#book_information_overlay{
+    background-color: rgba(0, 0, 0, 0.178);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: auto; 
+}
+#book_information_modal {
+    position: relative;
+    gap: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+
+    background-color: rgb(255, 255, 255);
+    width: 750px;
+    height: 500px;
+}
+#book_information_modal img {
+    align-self: center;
+    margin-left: 30px;
+    width: 280px;
+    height: 440px;
+}
+#book_information {
+    text-align: justify;
+    margin-top: 30px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+    gap: 15px;
+}
+
+#close_button {
+    
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+#close_button::before {
+    content: 'X';
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#close_button:hover {
+    background-color: rgb(37, 37, 37);
 }

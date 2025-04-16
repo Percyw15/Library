@@ -9,7 +9,7 @@
     <title>Library</title>
 </head>
 <body>
-    <div id="overlay">
+    <div id="new_book_overlay">
         <form id="new_book_modal">
             
             <div class="content_container">
@@ -33,15 +33,28 @@
                 <input type="file" id="file" name="file" accept="image/*">
             </div>
 
-            <button class="not_read read_or_not" id="read">Not Read</button>
+            <button type="button" class="not_read read_or_not" name="read_or_not" id="read_or_not">Not Read</button>
             <div class="confirm_action">
-                <button id="cancel">Cancel</button>
-                <button id="confirm">Confirm</button>
+                <button type="button" id="cancel">Cancel</button>
+                <button type="submit" id="confirm">Confirm</button>
             </div>
             
         </form>
+    </div>
 
-        
+    <div id="book_information_overlay">
+        <div id="book_information_modal">
+            <span id="close_button"></span>
+            <img  src="" alt="" >
+            <div id="book_information">
+                <div id="id_information"><strong>Id: </strong></div>
+                <div id="name_information"><strong>Name: </strong></div>
+                <div id="description_information"><strong>Description: </strong></div>
+                <div id="author_information"><strong>Author</strong></div>
+                <div id="year_information"><strong>Year: </strong></div>
+
+            </div>
+        </div>
     </div>
     <header class="layout-bar">
         <div class="logo"><img class="icon_logo" src="assets/Book.svg"><h1>Library</h1></div>
@@ -53,10 +66,10 @@
 
     <main>
         <div id="library_container">
-            
         </div>
     </main>
 
+  
     <footer class="layout-bar">
 
     </footer>
